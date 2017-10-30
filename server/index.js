@@ -8,12 +8,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '..', '/public')));
 
 app.use('/api', require('./api'));
 
 app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, '/public/index.html'));
+  // console.log('\n\n---DIRNAME----', __dirname)
+  res.sendFile(path.join(__dirname, '..', '/public/index.html'));
 });
 
 app.use(function (err, req, res, next) {
